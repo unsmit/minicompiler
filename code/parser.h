@@ -5,10 +5,13 @@
 #include <string.h>
 
 #define MAX_TOKENS 4
+#define MAX_TOKEN_LENGTH 16
 
-int parseLine(char *line);
 typedef struct{
-    char tokens[1];
+    char tokens[MAX_TOKENS][MAX_TOKEN_LENGTH];
+
 } Instruction;
+
+int parseLine(char *line, Instruction *instruction);
 
 #endif
