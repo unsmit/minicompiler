@@ -3,7 +3,7 @@
 		Reads assembly program
 		Writes ASCII hex version of binary machine code to object file
 -----------------------------------------------------------------------------*/
-#include <assembler.h>
+#include <asm.h>
 #include <parser.h>
 #include <stdio.h>
 
