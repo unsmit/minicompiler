@@ -30,18 +30,37 @@ int parseLine(char *line, Instruction *instruction){
     int tokenIndex = 0; // which token
     int charIndex = 0; // position in token
     char c = line[lineIndex]; // current char
-    char k; // temp char
 
+    // tokenize into tokens array in instruction struct
     while(c != '\0'){
-        k = c;
-        while(k != ' ' && k != ','){
-            instruction->tokens[lineIndex][tokenIndex] = f;
-            k = line[charIndex];
+        while(line[lineIndex] != ' ' && line[lineIndex] != ',' && line[lineIndex] != '\0'){
+            instruction->tokens[tokenIndex][charIndex] = line[lineIndex];
             charIndex++;
-            tokenIndex++;
+            lineIndex++;
         }
 
-        lineIndex++;
+        instruction->tokens[tokenIndex][charIndex] = '\0';
+        tokenIndex++;
+
+        if(line[lineIndex] != '\0'){
+            lineIndex++;
+            charIndex = 0;
+        }
+
+        while (line[lineIndex] == ' ') {
+            lineIndex++;
+        }
+
+        if(line[lineIndex] == ',' || line[lineIndex] == '\0'){
+           return 0;
+        }
+
         c = line[lineIndex];
     }
+    return 1; 
+}
+
+bool validateInstruction(Instruction *instruction){
+    // for(int i = 0; i < instruction->tokens)
+    return false;
 }
